@@ -1,10 +1,19 @@
 import "./App.css";
-import Home from "./components/Home/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Header, Home } from "./components";
 
 function App() {
   return (
     <>
-      <Home />
+      <Router>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </ThemeProvider>
+      </Router>
     </>
   );
 }

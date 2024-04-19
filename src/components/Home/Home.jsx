@@ -22,7 +22,7 @@ const Home = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex gap-10">
+      <form onSubmit={handleSubmit} className="flex gap-10 h-screen">
         <Input type="text" ref={messageRef} />
         <Button type="submit">submit</Button>
       </form>
