@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header, Home } from "./components";
+import { Header, Home, Sidebar } from "./components";
 
 function App() {
   return (

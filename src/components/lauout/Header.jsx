@@ -26,8 +26,7 @@ import {
   Users,
   Moon,
   Sun,
-  Menu,
-  X,
+  Search,
 } from "lucide-react";
 
 import {
@@ -44,6 +43,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import { Input } from "@/components/ui/input";
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -67,136 +68,24 @@ const Header = () => {
   const { setTheme } = useTheme();
   return (
     <>
-      <div className="p-4 flex items-center backdrop-blur-sm sticky top-0 ">
-        <div className="md:w-full flex md:flex-row flex-col items-center absolute md:static top-0 left-0 backdrop-blur-sm px-12  md:p-0">
-          <Menu
-            className={`md:hidden top-0 left-0 absolute m-4 size-8 ${
-              menuVisible ? "hidden" : "block"
-            }`}
-            style={{
-              backgroundColor: "var(--background)",
-              color: "var(--foreground)",
-              // Add more styles as needed
-            }}
-            onClick={toggleMenu}
-          />
-          <X
-            className={`md:hidden top-0 left-0 absolute m-4 size-8 ${
-              menuVisible ? "block" : "hidden"
-            }`}
-            style={{
-              backgroundColor: "var(--background)",
-              color: "var(--foreground)",
-              // Add more styles as needed
-            }}
-            onClick={toggleMenu}
-          />
-          <div
-            id="menubar"
-            className={`md:flex ${menuVisible ? "block" : "hidden"}`}
-          >
-            <p className="text-2xl font-bold mx-4 my-4">Contech.</p>
-            <NavigationMenu>
-              <NavigationMenuList className="md:gap-0 gap-5 md:flex-row flex-col md:h-auto  justify-evenly">
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Projects flex</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 w-[300px] md:w-[500px] lg:grid-cols-[.75fr_1fr] md:h-auto max-h-[300px] md:overflow-y-hidden overflow-y-scroll ">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                          <a
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/"
-                          >
-                            <h1 className="text-xl font-semibold">ConTech</h1>
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              Contech/flex
-                            </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              Welcome to the world of Contech. <br /> Flex you
-                              project here and get in touch with recruiters.
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                      <ListItem href="/project/new" title="New project">
-                        Flex your new project here.
-                      </ListItem>
-                      <ListItem href="/projects" title="Your projects">
-                        Get overiew and Costomize your projects here.
-                      </ListItem>
-                      <ListItem href="/projects/new/guide" title="Guide">
-                        Learn, how to flex a new project on ConTech.
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Jobs</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="w-[300px] gap-3 p-4 md:w-[400px] lg:w-[500px] md:h-auto max-h-[300px] md:overflow-y-hidden overflow-y-scroll ">
-                      <ListItem href="/jobs/tech" title="Tech Jobs">
-                        ○Frontend Developer ○Backend Developer ○Fullstack
-                        Developer ○Data Scientist ○Data Engineer ○Machine
-                        Learning Engineer ○DevOps Engineer...
-                      </ListItem>
-                      <ListItem href="/jobs/nontech" title="Non-Tech Jobs">
-                        ○Data analyst ○Business Analyst ○Business Development
-                        Manager ○Business Development Executive ○Business
-                        Development Associate...
-                      </ListItem>
-                      {user.role === "recruiter" && (
-                        <ListItem href="/jobs/new" title="Post a job">
-                          Post a new job for your company.
-                        </ListItem>
-                      )}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Interview Prep</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[300px] md:h-auto max-h-[300px] gap-3 p-4 md:w-[500px] md:grid-cols-2 md:overflow-y-hidden overflow-y-scroll ">
-                      <ListItem href="/jobs/tech" title="Prep with Resume">
-                        {/* Upload your resume and get a detailed analysis of your
-                      resume. */}
-                        Upload your resume and give interview accordingly.
-                      </ListItem>
-                      <ListItem href="/jobs/nontech" title="Prep By Topic">
-                        interview prepration by your choosen topics.
-                      </ListItem>
-                      <ListItem
-                        href="/jobs/nontech"
-                        title="Prep for a Job-Role"
-                      >
-                        interview prepration according to your job role.
-                      </ListItem>
-                      <ListItem href="/jobs/nontech" title="Prep in neish">
-                        Interview prepration in neish.
-                      </ListItem>
-                      {user.role === "recruiter" && (
-                        <ListItem href="/jobs/new" title="Post a job">
-                          Post a new job for your company.
-                        </ListItem>
-                      )}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
-                    <NavigationMenuLink>
-                      <Link to="/community">Community</Link>
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
+      <div className="md:p-4 p-2 flex items-center backdrop-blur-sm sticky top-0 justify-between z-50">
+        <div>
+          <p className="text-2xl font-bold mx-4 my-4 md:block hidden">
+            Contech.
+          </p>
+          <p className="text-xl font-bold mx-4 my-4 block md:hidden">C.</p>
         </div>
-        <div className="w-full flex justify-end px-5">
+        <div className="flex">
+          <Input className="md:w-96 w-40" />
+
+          <Button variant="outline" className="md:mx-3 mx-1 p-[0.625rem]">
+            <Search className="size-5" />
+          </Button>
+        </div>
+        <div className=" flex">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" className="mx-4">
+              <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
@@ -219,7 +108,7 @@ const Header = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Avatar className="size-9 cursor-pointer">
+              <Avatar className="size-9 cursor-pointer mx-2">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>

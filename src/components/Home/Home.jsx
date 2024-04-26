@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import Sidebar from "../lauout/Sidebar.jsx";
 
 const Home = () => {
   const messageRef = useRef();
@@ -21,12 +22,12 @@ const Home = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex gap-10 h-screen">
-        <Input type="text" ref={messageRef} />
-        <Button type="submit">submit</Button>
-      </form>
-    </div>
+    <>
+      <div className="flex">
+        <Sidebar />
+        <div className="  bg-red-200 h-[1000px]"></div>
+      </div>
+    </>
   );
 };
 
