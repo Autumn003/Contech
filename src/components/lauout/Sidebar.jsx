@@ -5,9 +5,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { PanelLeftInactive } from "lucide-react";
+import {
+  PanelLeftInactive,
+  ReceiptText,
+  BrainCircuit,
+  BriefcaseBusiness,
+  Users,
+  FilePlus2,
+  FileStack,
+  Files,
+  FileCheck2,
+  BookCheck,
+  Plus,
+  ScanSearch,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -20,30 +34,28 @@ const Sidebar = () => {
                 variant="outline"
                 className="my-5 mx-10 w-36 md:block hidden"
               >
-                Project
+                Projects
               </Button>
               <Button variant="outline" className="my-5 mx-2 md:hidden block">
                 <PanelLeftInactive />
               </Button>
             </PopoverTrigger>
-            <PopoverContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
-                    </p>
-                  </a>
-                </li>
-              </ul>
+            <PopoverContent className="flex flex-col w-full gap-2 ml-2 items-center">
+              <Link to="/allprojects">
+                <Button variant="outline" className="my-3">
+                  All Projects <FileStack className="mx-2 size-5" />
+                </Button>
+              </Link>
+              <Link to="/addproject">
+                <Button variant="outline" className="my-3">
+                  Add project <FilePlus2 className="mx-2 size-5" />
+                </Button>
+              </Link>
+              <Link to="/yourprojects">
+                <Button variant="outline" className="my-3">
+                  Your Projects <Files className="mx-2 size-5" />
+                </Button>
+              </Link>
             </PopoverContent>
           </Popover>
           <Popover>
@@ -55,10 +67,21 @@ const Sidebar = () => {
                 Resume ATS
               </Button>
               <Button variant="outline" className="my-5 mx-2 md:hidden block">
-                <PanelLeftInactive />
+                <ReceiptText />
               </Button>
             </PopoverTrigger>
-            <PopoverContent>Place content for the popover here.</PopoverContent>
+            <PopoverContent className="flex flex-col w-60 gap-2 ml-2 items-center">
+              <Link to="/resumeATS/jd">
+                <Button variant="outline" className="my-3">
+                  Review by Job description
+                </Button>
+              </Link>
+              <Link to="/resumeATS/job">
+                <Button variant="outline" className="my-3">
+                  Review by Job post
+                </Button>
+              </Link>
+            </PopoverContent>
           </Popover>
           <Popover>
             <PopoverTrigger>
@@ -69,10 +92,21 @@ const Sidebar = () => {
                 Interview Prep
               </Button>
               <Button variant="outline" className="my-5 mx-2 md:hidden block">
-                <PanelLeftInactive />
+                <BrainCircuit />
               </Button>
             </PopoverTrigger>
-            <PopoverContent>Place content for the popover here.</PopoverContent>
+            <PopoverContent className="flex flex-col w-60 gap-2 ml-2 items-center">
+              <Link to="/interviewprep/resume">
+                <Button variant="outline" className="my-3">
+                  Resume based prep <FileCheck2 className="mx-2 size-5" />
+                </Button>
+              </Link>
+              <Link to="/interviewprep/topics">
+                <Button variant="outline" className="my-3">
+                  Topic based prep <BookCheck className="mx-2 size-5" />
+                </Button>
+              </Link>
+            </PopoverContent>
           </Popover>
           <Popover>
             <PopoverTrigger>
@@ -83,22 +117,37 @@ const Sidebar = () => {
                 Jobs
               </Button>
               <Button variant="outline" className="my-5 mx-2 md:hidden block">
-                <PanelLeftInactive />
+                <BriefcaseBusiness />
               </Button>
             </PopoverTrigger>
-            <PopoverContent>Place content for the popover here.</PopoverContent>
+            <PopoverContent className="flex flex-col w-60 gap-2 ml-2 items-center">
+              <Link to="/interviewprep/resume">
+                <Button variant="outline" className="my-3">
+                  Find a job <ScanSearch className="mx-2 size-5" />
+                </Button>
+              </Link>
+              <Link to="/interviewprep/topics">
+                <Button variant="outline" className="my-3">
+                  Publish a job <Plus className="mx-2 size-5" />
+                </Button>
+              </Link>
+            </PopoverContent>
           </Popover>
           <Popover>
             <PopoverTrigger>
-              <Button
-                variant="outline"
-                className="my-5 mx-10 w-36 md:block hidden"
-              >
-                Community
-              </Button>
-              <Button variant="outline" className="my-5 mx-2 md:hidden block">
-                <PanelLeftInactive />
-              </Button>
+              <Link to="/community">
+                <Button
+                  variant="outline"
+                  className="my-5 mx-10 w-36 md:block hidden"
+                >
+                  Community
+                </Button>
+              </Link>
+              <Link to="/community">
+                <Button variant="outline" className="my-5 mx-2 md:hidden block">
+                  <Users />
+                </Button>
+              </Link>
             </PopoverTrigger>
           </Popover>
         </div>
