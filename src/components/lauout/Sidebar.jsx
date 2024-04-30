@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <>
-      <div className="p-4 w-1/5  flex flex-col items-center h-full sticky top-12 left-0">
+      <div className="p-4 w-1/5  flex flex-col items-center h-full sticky top-24 left-0">
         <div className="rounded-md bg-gradient-to-b from-muted/0 to-muted py-4">
           <Popover>
             <PopoverTrigger>
