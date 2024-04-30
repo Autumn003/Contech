@@ -76,9 +76,12 @@ const Header = () => {
           <p className="text-xl font-bold mx-4 my-4 block md:hidden">C.</p>
         </div>
         <div className="flex">
-          <Input className="md:w-96 w-40" />
+          <Input className="md:w-96 w-40 bg-transparent focus-visible:bg-accent" />
 
-          <Button variant="outline" className="md:mx-3 mx-1 p-[0.625rem]">
+          <Button
+            variant="outline"
+            className="md:mx-3 mx-1 p-[0.625rem] bg-transparent"
+          >
             <Search className="size-5" />
           </Button>
         </div>
